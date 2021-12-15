@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+<div>
+    <div class="form-add-new-page">
+        <form id="form-add-new-form" class="form-add-new-form" action="/crawled-pages" method="POST">
+            <input class="form-input-page-name" placeholder="Name" type="text" name="page_name" id="page_name">
+            <input class="form-input-page-url" placeholder="URL" type="text" name="page_url" id="page_url">
+            <input class="form-input-page-button" type="submit" value="Crawle Page">
+        </form>
+    </div>
+
+    <div class="saparator"></div>
+
+    <div class="response-root">
+        {% for page in crawled_pages %}
+        <div class="response-container">
+            <div class="response-details">
+                <div class="response-name">{{ page.name }}</div>
+                <div class='response-url'>{{ page.url }}</div>
+            </div>
+            <div class="response-information">
+                <div class='response-count'>{{ page.word_count }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
